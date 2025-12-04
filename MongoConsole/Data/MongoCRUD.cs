@@ -36,10 +36,10 @@ namespace MongoConsole.Data
             var collection = db.GetCollection<UserModel>(table);
             var users = await collection.AsQueryable().ToListAsync();
             return users;
-            
+
         }
 
-        public async Task<UserModel> GetUserById (string table, string id)
+        public async Task<UserModel> GetUserById(string table, string id)
         {
             var collection = db.GetCollection<UserModel>(table);
             var user = await collection.Find(x => x.Id == id).FirstOrDefaultAsync();
@@ -48,7 +48,7 @@ namespace MongoConsole.Data
 
         // UPDATE
 
-        public async Task<UserModel> UpdateUser (string table, string id, UserModel UpdatedUser)
+        public async Task<UserModel> UpdateUser(string table, string id, UserModel UpdatedUser)
         {
             var collection = db.GetCollection<UserModel>(table);
 
@@ -65,8 +65,8 @@ namespace MongoConsole.Data
         }
 
         //DELETE
-        
-        public async Task<string> RemoveUser (string table, string id)
+
+        public async Task<string> RemoveUser(string table, string id)
         {
             var collection = db.GetCollection<UserModel>(table);
             var user = await collection.DeleteOneAsync(x => x.Id == id);

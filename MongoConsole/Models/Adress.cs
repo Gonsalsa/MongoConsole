@@ -12,5 +12,14 @@ namespace MongoConsole.Models
         public string City { get; set; }
         public string State { get; set; }
         public string ZipCode { get; set; }
+
+
+        //public Adress(string street, string city, string, string state, string zip)
+        //{
+        //    Street = street;
+        //    City = city;
+        //    State = state;
+        //    ZipCode = zip;
+        //}
     }
 }
