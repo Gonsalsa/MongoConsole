@@ -72,5 +72,14 @@ namespace MongoConsole.Data
             var user = await collection.DeleteOneAsync(x => x.Id == id);
             return "User was deleted";
         }
+
+        public async Task<string> DeleteAll(string table)
+        {
+            var collection = db.GetCollection<UserModel>(table);
+
+            var HitList = await collection.DeleteManyAsync(x => x.Id != null);
+
+            return "All is gone";
+        }
     }
 }

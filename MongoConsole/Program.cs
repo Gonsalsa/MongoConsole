@@ -13,8 +13,7 @@ namespace MongoConsole
         static async Task Main(string[] args)
         {
 
-            await AddUser();
-            await GetAllUsers();
+            await FullExtermination("Users");
         }
 
         static async Task<string> AddUser()
@@ -68,6 +67,15 @@ namespace MongoConsole
             MongoCRUD service = new MongoCRUD("UserModel");
             var UserToDelete = await service.RemoveUser("User", user.Id);
             return UserToDelete;
+        }
+    
+        static async Task<string> FullExtermination (string table)
+        {
+            MongoCRUD service = new MongoCRUD("UserModel");
+
+            var Targets = await service.DeleteAll(table);
+
+            return "All is gone";
         }
     }
 }
