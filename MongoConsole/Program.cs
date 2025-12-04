@@ -50,6 +50,24 @@ namespace MongoConsole
             }
         }
 
+        static async Task <UserModel> GetById (string userId)
+        {
+            MongoCRUD service = new MongoCRUD("Usermodel");
+            var findUser = await service.GetUserById("User", userId);
+            return findUser;
+        }
 
+        static async Task <UserModel> UpdateUser(UserModel user)
+        {
+            MongoCRUD service = new MongoCRUD("UserModel");
+            return await service.UpdateUser("User", user.Id, user);
+        }
+
+        static async Task<string> DeleteUser (UserModel user)
+        {
+            MongoCRUD service = new MongoCRUD("UserModel");
+            var UserToDelete = await service.RemoveUser("User", user.Id);
+            return UserToDelete;
+        }
     }
 }
